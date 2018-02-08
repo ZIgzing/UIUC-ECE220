@@ -1,0 +1,11 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	OUTERL            3002
+//	INNERL            3005
+//	SKIP1             3012
+//	SKIP2             3015
+//	NUMS              3018
+//	LETS              3019
+

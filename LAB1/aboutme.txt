@@ -1,0 +1,4 @@
+Hello, my name is Marc Harvey. I am a freshman studying computer engineering,
+and so far I have taken ece120, and I am taking 110, 220, and CS173 this 
+semester. I am interested in computer science because automating things 
+is something I am passionate about.

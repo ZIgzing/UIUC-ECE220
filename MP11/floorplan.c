@@ -7,8 +7,39 @@ UIUC ECE 220 MP11
 
 The functions in this file are used in main.c to create an efficient floorplan of varying sized rectangles. It reads text
 files of a given format, and uses a binary tree structure to interpret and organize each 'block'. The functions that I wrote
-are init_slicing_tree, is_leaf_node, is_internal_node, is_in_subtree, postfix_traversal, rotate, recut, swap_module,
+are is_leaf_node, is_internal_node, is_in_subtree, postfix_traversal, rotate, recut, swap_module,
 swap_topology, and init_slicing_tree.
+
+The function is_leaf_node determines whether or not a given node on the binary tree is a leaf. It does this simply by
+checking if the node has any children.
+
+The function is_internal_node determines whether of not a given node on the binary tree is internal. It does this simply by
+checking if the node doesn't have any children.
+
+The function is_in_subtree determines if a given node is a part of another given node's subtree. It does this by recursing
+up the tree, starting at the lower node, and returning true if the two nodes are ever equal, and false if the recusrsivley
+changing node is ever NULL.
+
+The function postfix_traversal is used in the given function get_expression, and simply fills a list of expression units as
+it traverses the tree. It is left biased depth first algorithm, and the array to be filled is global.
+
+The function rotate swaps the width and height of a given node's module.
+
+The function recut changes the type of cut (vertical or horizontal) of a given node.
+
+The function swap_module simply swaps the modules of two given nodes.
+
+The function swap_topology swaps the entire subtrees with roots at two given nodes. That means it swaps parents of both,
+as well as both children. In order to do that, it first determines whether each node is a right or left node.
+
+init_slicing_tree was the meat of the assignment and does the initialization of a binary slicing tree given global list
+of modules. The tree it creates is left-oriented. It completes this heft task by first setting up a left node, and making
+its cut vertical, and making its parent the paramter par (which is null for the first call). Next (if it is not at the very
+top of the tree) it makes a right child node with the first module in the modules list. Then, it recurses into the left node
+that was just created, making it the par node in the new call, while incrementing n by 1 in that call. The function
+continues to recurse in such a manner until it reaches its base case, where it just creates two children nodes, each with
+no children of their own, and having the last 2 modules as their respective modules.
+
 ----------------------------------------------------------------------------------------------------------------------------*/
 
 #include "floorplan.h"
